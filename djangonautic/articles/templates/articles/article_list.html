@@ -1,0 +1,69 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <div class='table-wrapper'>
+        <div class="col-sm-4 col-sm-offset-8">
+            <div class="row">
+                <input id='search' type="text" class='form-control' placeholder='Search Here...'><br>
+            </div>
+
+        </div>
+        <table id='myTable' class='table table-bordered table-condensed'>
+            <tr class='tb-header'>
+                <th>Article</th>
+                <th>Date</th>
+                <th class='text-center'>Action</th>
+            </tr> 
+            {% for article in articles%}
+            <tr class='data-rows'>
+                <td>{{ article.title }}</td>
+                <td>{{ article.date }}</td>
+                <td class='text-center myAction'>
+                    <a class="myView" href="{{ article.id }}">
+                        <span class="fa fa-eye"></span>
+                    </a>
+
+                    <!---<a class='myPencil' href="/articles/edit/{{ article.id }}">
+                        <span class="fa fa-pencil"></span>
+                    </a>--->
+
+                    <form class='form-trash' action="/articles/delete/{{ article.id }}" method='POST'>
+                        {% csrf_token%}
+                        <button type='submit'><span class="fa fa-trash"></span></button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <style>
+        .form-trash button{
+            float:right;
+            margin-right:17%;
+            border:none;
+            color:rgb(217, 73, 54);
+        }
+        .myAction a{
+            float:left;
+            margin-left:19%;
+        }
+
+
+    </style>
+
+    <script>
+        $(document).ready(function(){
+          $("#search").on("keyup", function() {
+
+            var value = $(this).val().toLowerCase();
+            $("#myTable .data-rows").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+            
+          });
+        });
+    </script>
+
+    
+{% endblock %}

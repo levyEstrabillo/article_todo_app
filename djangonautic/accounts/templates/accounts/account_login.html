@@ -1,0 +1,27 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+    <div class="col-sm-6 col-sm-offset-3 customBox">
+        <form action="{% url 'accounts:login' %}" method='POST'>
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <input class='btn btn-success' type="submit" value='Login'>
+            {% if request.GET.next %}
+                <input type="hidden" name='next' value='{{ request.GET.next }}'>
+            {% endif %}
+        </form>
+    </div>
+    
+
+    <script>
+        {% if user.is_authenticated %}
+            reloadPage()
+        {% endif %}
+
+        $('input').attr('class','form-control id_username')
+        $('form').attr('class', 'form-group')
+    </script>
+
+{% endblock %}

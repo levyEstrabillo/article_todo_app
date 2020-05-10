@@ -1,0 +1,37 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+    <h3>Add Article:</h3>
+    <form action="{% url 'articles:create'%}" method='POST' enctype="multipart/form-data">
+        <div class='col-sm-7 form-create'>
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="create-save-btn btn btn-primary" value="Save">
+            <hr>
+        </div>
+    </form>    
+
+    <script>
+        $('document').ready(function(){
+            var title = document.getElementById('id_title');
+            var slug = document.getElementById('id_slug');
+            
+            const slugify = (val) => {
+                return val.toString().toLowerCase().trim()
+                .replace(/&/g, '-and-')
+                .replace(/[\s\W-]+/g,'-')
+            };
+
+            $(title).keyup(function(){
+                slug.setAttribute('value', slugify(title.value))
+            })
+
+            $('input[type="text"]').attr('class','form-control btn-block')
+            $('input[type="file"]').attr('class','btn btn-default')
+            $('textarea').attr('class','form-control btn-block')
+            $('input[type="text"]').attr('autocomplete','off')
+        })
+    </script>
+
+{% endblock %}

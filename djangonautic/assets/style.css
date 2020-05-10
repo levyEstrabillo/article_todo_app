@@ -1,0 +1,73 @@
+.customBox{
+    border:2px solid rgb(190,190,190);
+    background-color:white;
+    padding:50px 40px;
+    margin-top:30px;
+    border-radius:5px;
+}
+
+.custom-btn{
+    background-color:white;
+    color:rgb(120,120,120);
+    border:none;
+    line-height:47px;
+    font-size:15px;
+}
+
+.custom-btn:hover{
+    color: rgb(50,50,50);
+}
+
+.table-wrapper{
+    padding:10px 70px;
+}
+
+.tb-header{
+    background-color:steelblue;
+    color:white;
+}
+
+.helptext{
+    display:block;
+    margin:10px 0;
+    color:rgb(140,140,140);
+    font-size:13px;
+}
+
+.errorlist{
+    border:2px solid rgb(224, 94, 67);
+    color:rgb(224, 94, 67);
+    padding:5px 5px;
+    background-color:rgb(255, 219, 212);
+    border-radius:5px;
+}
+
+.errorlist li{
+    list-style:none;
+}
+
+.btn-signup{
+    float:right;
+}
+
+.form-create label{
+    margin-top:15px;
+}
+
+.create-save-btn{
+    float:right;
+    margin:15px 0;
+    width:20%;
+}
+
+.img-detail{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    max-width:200px;
+}
+
+.create-wrapper p.mod-author{
+    color:rgb(120,120,120);
+}

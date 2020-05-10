@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+
+    <h3>Article Detail:</h3>
+    <img class='img-detail' src="{{ article.thumb.url }}">
+    <div class="col-sm-6 col-sm-offset-3 create-wrapper">
+        <h4 class='text-center'>{{ article.upper }}</h4>
+        <p class='text-justify'>{{ article.body }}</p>
+        <p class='text-right'>{{ article.date }}</p>
+        <p class="mod-author">{{ article.editedAuthor }}</p>
+    </div>
+
+{% endblock %}
